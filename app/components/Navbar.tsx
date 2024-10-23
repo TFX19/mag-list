@@ -1,4 +1,5 @@
 //rafc
+import Link from 'next/link'
 import React from 'react'
 
 const Navbar = () => {
@@ -56,7 +57,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <div className="dropdown dropdown-end">
+    <Link href="/auth/login" className="btn btn-primary">Login</Link>
+    {/* <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
@@ -76,7 +78,7 @@ const Navbar = () => {
         <li><a>Settings</a></li>
         <li><a>Logout</a></li>
       </ul>
-    </div>
+    </div> */}
   </div>
 </div>
   )
