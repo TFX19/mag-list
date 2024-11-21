@@ -22,7 +22,7 @@ import { NextResponse } from "next/server";
             },
             {
                 status: 409
-            });
+            })
         }
 
         const existingUserByUsername = await db.user.findUnique({
@@ -35,11 +35,10 @@ import { NextResponse } from "next/server";
             },
             {
                 status: 409
-            });
+            })
         }
 
         const hashedPassword = await hash(password, 10);
-
         const newUser = await db.user.create({
             data: {
                 email,
@@ -47,7 +46,7 @@ import { NextResponse } from "next/server";
                 password: hashedPassword
             }
         });
-        const { password: _, ...rest } = newUser; //uma questão de segurança
+        const { password: newUserPassword, ...rest } = newUser; //uma questão de segurança
 
         return NextResponse.json({ user: rest, message:"User created"}, { status: 201});
     } catch (error) {
