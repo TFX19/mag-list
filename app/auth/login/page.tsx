@@ -59,7 +59,7 @@ export default function AuthLogin() {
           </form>
           <div className="divider">OR</div>
           <div className="text-center">
-            <p>Don't have an account?</p>
+            <p>Don&apos;t have an account?</p>
             <Link href="/auth/signup" className="link link-primary">
               Sign up now
             </Link>
