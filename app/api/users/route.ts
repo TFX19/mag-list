@@ -2,10 +2,20 @@ import { db } from "@/app/lib/db";
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
 
- export const GET = () => 
-{
-    return new NextResponse("First API with next.");
-};
+export async function GET() {
+    try {
+        const users = await db.user.findMany({
+            select: {
+                email: true,
+                username: true,  
+            },
+        });
+
+        return NextResponse.json({ users, message: "Users retrieved successfully" }, { status: 200 });
+    } catch (error) {
+        return NextResponse.json({ message: "Something went wrong" }, { status: 500 });
+    }
+}
 
  export async function POST(req: Request) {
     try {
